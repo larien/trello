@@ -1,6 +1,8 @@
 # trello
 Trello wrapper &amp; CLI written in Go
 
+[WORK IN PROGRESS]
+
 ### Inspirations
 
 - [adlio's trello package (Go)](https://github.com/adlio/trello)
