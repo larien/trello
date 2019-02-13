@@ -1,7 +1,6 @@
-# trello
+# trello [WIP]
 Trello wrapper &amp; CLI written in Go
 
-[WORK IN PROGRESS]
 
 ### Inspirations
 
