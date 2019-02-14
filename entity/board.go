@@ -10,27 +10,57 @@ type Board struct {
 	IsPinned       bool   `json:"pinned"`
 	URL            string `json:"url"`
 	ShortURL       string `json:"shortUrl"`
-	// Prefs
-	// LabelNames
-	IsStarred bool `json:"starred"`
-	// Limits
-	// Memberships
+	Preferences    `json:"prefs"`
+	LabelNames     `json:"labelNames"`
+	IsStarred      bool `json:"starred"`
+	// TODO - Limits  -> an object containing information on the limits that exist for the board
+	Memberships []Membership `json:"memberships"`
 }
 
-// prefs
-// object
+// BackgroundImage contains the board background's width, height and URL.
+type BackgroundImage struct {
+	Width  int    `json:"width"`
+	Height int    `json:"height"`
+	URL    string `json:"url"`
+}
 
-// Short for "preferences", these are the settings for the board
+// Preferences defines the board preferences.
+type Preferences struct {
+	Background            string            `json:"background"`
+	BackgroundBrightness  string            `json:"backgroundBrightness"`
+	BackgroundColor       string            `json:"backgroundColor"`
+	BackgroundImage       string            `json:"backgroundImage"`
+	BackgroundImageScaled []BackgroundImage `json:"backgroundImageScaled"`
+	BackgroundTile        bool              `json:"backgroundTile"`
+	CalendarFeedEnabled   bool              `json:"calendarFeedEnabled"`
+	CanBeOrg              bool              `json:"canBeOrg"`
+	CanBePublic           bool              `json:"canBePublic"`
+	CanBePrivate          bool              `json:"canBePrivate"`
+	CanInvite             bool              `json:"canInvite"`
+	CardAging             string            `json:"cardAging"`
+	CardCovers            bool              `json:"cardCovers"`
+	Comments              string            `json:"comments"`
+	Invitations           string            `json:"invitations"`
+	PermissionLevel       string            `json:"permissionLevel"`
+	SelfJoin              bool              `json:"selfjoin"`
+	Voting                string            `json:"voting"`
+}
 
-// labelNames
-// object
+// LabelNames contains all card labels for each color available.
+type LabelNames struct {
+	Black  string `json:"black,omitempty"`
+	Blue   string `json:"blue,omitempty"`
+	Green  string `json:"green,omitempty"`
+	Lime   string `json:"lime,omitempty"`
+	Orange string `json:"orange,omitempty"`
+	Pink   string `json:"pink,omitempty"`
+	Purple string `json:"purple,omitempty"`
+	Red    string `json:"red,omitempty"`
+	Sky    string `json:"sky,omitempty"`
+	Yellow string `json:"yellow,omitempty"`
+}
 
-// Object containing color keys and the label names given for one label of each color on the board. To get a full list of labels on the board see /boards/{id}/labels/.
-
-// limits
-// object
-
-// An object containing information on the limits that exist for the board. Read more about at Limits.
-
-// memberships
-// array
+// Membership contains the member's ID
+type Membership struct {
+	ID string `json:"id"`
+}
